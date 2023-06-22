@@ -2,7 +2,7 @@ import json
 
 
 def update(newUnit):
-    with open(r"./statics/headDept.json", "r+") as file:
+    with open(r"../statics/headDept.json", "r+") as file:
         data = json.load(file)
 
     updateData = data['accountHead']

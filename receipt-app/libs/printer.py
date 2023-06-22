@@ -1,9 +1,9 @@
 from fpdf import FPDF
 import os
 import datetime
-# import win32
-# import win32api
-# import win32print
+import win32
+import win32api
+import win32print
 
 class Printer():
     def __init__(self, _data_voucherNo, _data_accHead, _data_paidTo, _data_rupeesNo, _data_rupeesTxt, _data_accountOf, _data_byCCNo, _data_bankAccNo, _data_onTime):
@@ -109,8 +109,8 @@ class Printer():
 
         pdf.output(f'./pdfs/{self._voucherNo}.pdf', 'F')
 
-        # currentprinter = win32print.GetDefaultPrinter()
-        # win32api.ShellExecute(0, "print", f'./pdfs/{self._voucherNo}.pdf', '/d:"%s"' % currentprinter, ".", 0)
+        currentprinter = win32print.GetDefaultPrinter()
+        win32api.ShellExecute(0, "print", f'./pdfs/{self._voucherNo}.pdf', '/d:"%s"' % currentprinter, ".", 0)
 
         # os.startfile(f"./pdfs/{self._voucherNo}.pdf", "Print")
 
@@ -120,4 +120,4 @@ class Printer():
         now = datetime.datetime.now()
         curr = now.strftime("%d/%m/%Y %H:%M:%S")
         return str(curr)
-# Printer().startPrinting()
+

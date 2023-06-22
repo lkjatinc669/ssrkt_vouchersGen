@@ -15,7 +15,6 @@ class RecieptDatabase:
         cursor = self.connection.cursor()
         sql = f"INSERT INTO {self.table} (voucherNo, accountHead,  paidTo, rupeesNo, rupeesText, onAccountOf, byChequeNoCash, bankAccount) VALUES \
         ('{voucherNo}', '{accHead}', '{paidTo}', '{rupeeNo}', '{rupeeTxt}', '{accountOf}', '{byCCNo}', '{bankAccNo}')"
-        print(sql)
         cursor.execute(sql)
         self.connection.commit()
         if cursor.rowcount == 1: return True
@@ -24,7 +23,6 @@ class RecieptDatabase:
     def _fetch(self, voucherNo):
         cursor = self.connection.cursor()
         sql = f"SELECT * FROM {self.table} where voucherNo = {voucherNo}"
-        print(sql)
         cursor.execute(sql)
         myresult = cursor.fetchall()
         if len(myresult) == 0:
@@ -39,9 +37,3 @@ class RecieptDatabase:
         result = result[-1]
         return result[0]
     
-
-# y = RecieptDatabase("localhost", "root", "lkjatinc669", "vouchersDB")
-# z = y._fetch("1")
-# res = z
-# res = y.getLastVoucher()
-# print(res)

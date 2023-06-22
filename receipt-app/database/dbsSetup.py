@@ -2,7 +2,7 @@ import mysql.connector
 import time
 import json
 
-with open(r'./statics/dbStatics.json', 'r') as file:
+with open(r'../statics/dbStatics.json', 'r') as file:
     data = json.load(file)
     hostname = data['values']['hostname']
     username = data['values']['username']
