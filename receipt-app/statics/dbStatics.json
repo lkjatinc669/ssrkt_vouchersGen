@@ -2,7 +2,7 @@
     "values": {
         "hostname": "localhost",
         "username": "root",
-        "password": "lkjatinc669",
+        "password": "root",
         "database": "vouchersDB"
     }
 }

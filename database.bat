@@ -1,3 +1,3 @@
 @echo off
 cd receipt-app/database
-python dbsetup.py
+python dbSetup.py
