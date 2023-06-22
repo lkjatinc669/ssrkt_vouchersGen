@@ -11,7 +11,6 @@ from libs import printer
 
 class App():
     def __init__(self, master):
-        x = 30
         self.y = 190
         self.increment = 40
         self.master = master
@@ -56,6 +55,8 @@ class App():
         self.voucherNoE.place(x=150, y=self.y)
         self.voucherNoB = Button(self.master, text="Load", command=self.load, width=10, height=1)
         self.voucherNoB.place(x=330, y=self.y-5)
+        self.voucherNoB = Button(self.master, text="Load & Print", command=self.loadandprint, width=10, height=1)
+        self.voucherNoB.place(x=450, y=self.y-5)
 
         self.y += self.increment
         
@@ -125,8 +126,8 @@ class App():
         self.buttonSave.place(x=510, y=self.y)
         self.buttonClear = Button(self.master, text="Clear", command=self.clear, width=10)
         self.buttonClear.place(x=630, y=self.y)
-        self.buttonPrint = Button(self.master, text="Print", command=self.printCom, width=10)
-        self.buttonPrint.place(x=750, y=self.y)
+        self.buttonSaveAndPrint = Button(self.master, text="Save & Print", command=self.saveandprint, width=10)
+        self.buttonSaveAndPrint.place(x=750, y=self.y)
 
         self.setVoucherNo()
 
@@ -149,7 +150,8 @@ class App():
     def toText(self, event):
         number = self.stringVar_rupeesNo.get()
         self.rupeesTxtE.delete(0, END)
-        self.rupeesTxtE.insert(0, str(wordGen.say_number(int(number))))
+        numText = str(wordGen.say_number(int(number)))
+        self.rupeesTxtE.insert(0, numText)
 
     def changedetector(self, event):
         etc = self.stringVar_accHead.get()
@@ -194,9 +196,8 @@ class App():
 
     def save(self):
         data = self.fetchData()
-
         dbApp = initialize.RecieptDatabase(self.dbConnStatics[0], self.dbConnStatics[1], self.dbConnStatics[2], self.dbConnStatics[3])
-
+        self.oldID = data[0]
         result = dbApp._insert(
             data[0],
             data[1],
@@ -238,8 +239,10 @@ class App():
         self.loadList()
         
 
-    def load(self):
-        voucherNo = int(self.stringVar_voucherNoS.get())
+    def load(self, voucherNo=None):
+        if voucherNo is None:
+            voucherNo = int(self.stringVar_voucherNoS.get())
+        # voucherNo = int(self.stringVar_voucherNoS.get())
         dbApp = initialize.RecieptDatabase(self.dbConnStatics[0], self.dbConnStatics[1], self.dbConnStatics[2], self.dbConnStatics[3])
         data = dbApp._fetch(voucherNo)
         self.loadList()
@@ -271,8 +274,8 @@ class App():
         self.clear()
         self.setVoucherNo()
 
-    def printCom(self):
-        return None
+    def loadandprint(self):
+        self.load()
         _data_voucherNo = self.stringVar_voucherNoS.get()
         _data_accHeadT = self.stringVar_accHead.get()
         if _data_accHeadT == "Other": 
@@ -289,6 +292,28 @@ class App():
         _data_onDate = self.stringVar_onDate.get()
         printConn = printer.Printer(_data_voucherNo, _data_accHead, _data_paidTo, _data_rupeesNo, _data_rupeesTxt, _data_accountOf, _data_byCCNo, _data_bankAccNo, _data_onDate)
         printConn.startPrinting()
+
+    def saveandprint(self):
+        self.save()
+        lastVoucher = int(self.getVoucherNo())
+        self.load(lastVoucher)
+        _data_voucherNo = self.stringVar_voucherNoS.get()
+        _data_accHeadT = self.stringVar_accHead.get()
+        if _data_accHeadT == "Other": 
+            _data_accHead = self.stringVar_accHeadO.get();
+            listUpdater.update(_data_accHead)
+        else: 
+            _data_accHead = self.stringVar_accHead.get()
+        _data_paidTo = self.stringVar_paidTo.get()
+        _data_rupeesNo = self.stringVar_rupeesNo.get()
+        _data_rupeesTxt= self.stringVar_rupeesTxt.get()
+        _data_accountOf = self.stringVar_accountOf.get()
+        _data_byCCNo = self.stringVar_byCCNo.get()
+        _data_bankAccNo = self.stringVar_bankAccNo.get()
+        _data_onDate = self.stringVar_onDate.get()
+        printConn = printer.Printer(_data_voucherNo, _data_accHead, _data_paidTo, _data_rupeesNo, _data_rupeesTxt, _data_accountOf, _data_byCCNo, _data_bankAccNo, _data_onDate)
+        printConn.startPrinting()
+        self.new()
     
     def getCurrTime(self):
         now = datetime.datetime.now()
