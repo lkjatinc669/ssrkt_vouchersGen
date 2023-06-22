@@ -8,6 +8,7 @@ from database import initialize
 from libs import listUpdater
 from libs import printer
 
+listUpdater
 
 class App():
     def __init__(self, master):
@@ -247,7 +248,6 @@ class App():
         data = dbApp._fetch(voucherNo)
         self.loadList()
 
-        print(data)
         if data==False:
             messagebox.showerror("Error", "No Data Found")
         else:

@@ -107,12 +107,13 @@ class Printer():
         pdf.ln(10)
         pdf.cell(w = 190, h = 1, txt="", fill=True, align="C")
 
-        pdf.output(f'./pdfs/{self._voucherNo}.pdf', 'F')
+        filename = f"{self._voucherNo}.pdf" 
+        pdf.output(f'./pdfs/{filename}', 'F')
 
-        currentprinter = win32print.GetDefaultPrinter()
-        win32api.ShellExecute(0, "print", f'./pdfs/{self._voucherNo}.pdf', '/d:"%s"' % currentprinter, ".", 0)
-
-        # os.startfile(f"./pdfs/{self._voucherNo}.pdf", "Print")
+        # currentprinter = win32print.GetDefaultPrinter()
+        # win32api.ShellExecute(0, "print", f'./pdfs/{self._voucherNo}.pdf', '/d:"%s"' % currentprinter, ".", 0)
+        print(os.getcwd())
+        # os.startfile(f"/pdfs/{filename}", "Print")
 
         # print(self._voucherNo, self._accHead, self._paidTo, self._rupeesNo, self._rupeesTxt, self._accountOf, self._byCCNo, self._bankAccNo, self._onTime)
 
