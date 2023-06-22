@@ -1,2 +1,3 @@
-json
 mysql-connector-python
+fpdf
+num2words

@@ -36,4 +36,3 @@ class RecieptDatabase:
         result = cursor.fetchall()
         result = result[-1]
         return result[0]
-    
