@@ -1,9 +1,6 @@
 from fpdf import FPDF
 import os
 import datetime
-import win32
-import win32api
-import win32print
 
 class Printer():
     def __init__(self, _data_voucherNo, _data_accHead, _data_paidTo, _data_rupeesNo, _data_rupeesTxt, _data_accountOf, _data_byCCNo, _data_bankAccNo, _data_onTime):
