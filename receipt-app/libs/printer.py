@@ -20,7 +20,6 @@ class Printer():
     def startPrinting(self):
         pdf = FPDF('P', 'mm', 'A4')
         pdf.add_page()
-        # pdf.set_margins(0, 0, 0)
         pdf.set_font('Arial', '', 10)
         pdf.cell(w = 190, h = 1, txt="", fill=True, align="C")
         pdf.ln(2)
@@ -43,44 +42,44 @@ class Printer():
         pdf.cell(w = 190, h = 8, txt="DEBIT VOUCHER", align="C")
 
         # Body
-        pdf.ln(10)
+        pdf.ln(7)
         pdf.cell(w = 190, h = 1, txt="", fill=True, align="C")
         pdf.set_font('Arial', '', 10)
-        pdf.ln(3)
+        pdf.ln(1)
         pdf.set_font('Arial', '', 10)
         pdf.cell(w = 150, h = 8, txt="Date:", align="R")
         pdf.cell(w = 40, h = 8, txt=self.getCurrentTime(), align="R")
-        pdf.ln(10)
-        pdf.cell(w = 60, h = 8, txt="Account Head: ", border=1)
-        pdf.cell(w = 130, h = 8, txt=self._accHead, border=1)
+        pdf.ln(7)
+        pdf.cell(w = 60, h = 7, txt="Account Head: ", border=1)
+        pdf.cell(w = 130, h = 7, txt=self._accHead, border=1)
 
-        pdf.ln(8)
-        pdf.cell(w = 60, h = 8, txt="Paid To", border=1)
-        pdf.cell(w = 130, h = 8, txt=self._paidTo, border=1)
+        pdf.ln(7)
+        pdf.cell(w = 60, h = 7, txt="Paid To", border=1)
+        pdf.cell(w = 130, h = 7, txt=self._paidTo, border=1)
 
-        pdf.ln(8)
-        pdf.cell(w = 60, h = 8, txt="Rs (In Number)", border=1)
-        pdf.cell(w = 130, h = 8, txt=self._rupeesNo, border=1)
+        pdf.ln(7)
+        pdf.cell(w = 60, h = 7, txt="Rs (In Number)", border=1)
+        pdf.cell(w = 130, h = 7, txt=self._rupeesNo, border=1)
 
-        pdf.ln(8)
-        pdf.cell(w = 60, h = 8, txt="Rs (in Text)", border=1)
-        pdf.cell(w = 130, h = 8, txt=self._rupeesTxt, border=1)
+        pdf.ln(7)
+        pdf.cell(w = 60, h = 7, txt="Rs (in Text)", border=1)
+        pdf.cell(w = 130, h = 7, txt=self._rupeesTxt, border=1)
 
-        pdf.ln(8)
-        pdf.cell(w = 60, h = 8, txt="On Account Of", border=1)
-        pdf.cell(w = 130, h = 8, txt=self._accountOf, border=1)
+        pdf.ln(7)
+        pdf.cell(w = 60, h = 7, txt="On Account Of", border=1)
+        pdf.cell(w = 130, h = 7, txt=self._accountOf, border=1)
 
-        pdf.ln(8)
-        pdf.cell(w = 60, h = 8, txt="By Cheque No / Cash", border=1)
-        pdf.cell(w = 130, h = 8, txt=self._byCCNo, border=1)
+        pdf.ln(7)
+        pdf.cell(w = 60, h = 7, txt="By Cheque No / Cash", border=1)
+        pdf.cell(w = 130, h = 7, txt=self._byCCNo, border=1)
 
-        pdf.ln(8)
-        pdf.cell(w = 60, h = 8, txt="Bank Acc No", border=1)
-        pdf.cell(w = 130, h = 8, txt=self._bankAccNo, border=1)
+        pdf.ln(7)
+        pdf.cell(w = 60, h = 7, txt="Bank Acc No", border=1)
+        pdf.cell(w = 130, h = 7, txt=self._bankAccNo, border=1)
 
-        pdf.ln(8)
-        pdf.cell(w = 60, h = 8, txt="Transaction Date", border=1)
-        pdf.cell(w = 130, h = 8, txt=self._onTime, border=1)
+        pdf.ln(7)
+        pdf.cell(w = 60, h = 7, txt="Transaction Date", border=1)
+        pdf.cell(w = 130, h = 7, txt=self._onTime, border=1)
 
         # Footer
 
@@ -121,4 +120,3 @@ class Printer():
         now = datetime.datetime.now()
         curr = now.strftime("%d/%m/%Y %H:%M:%S")
         return str(curr)
-
