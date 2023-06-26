@@ -106,7 +106,7 @@ class Printer():
         filename = f"{self._voucherNo}.pdf" 
         pdf.output(f'./pdfs/{filename}', 'F')
         print(os.getcwd())
-        filepath = str(os.getcwd()) + str("\pdfs\{filename}")
+        filepath = str(os.getcwd()) + str(f"\pdfs\{filename}")
         os.startfile(filepath, "Print")
 
         # print(self._voucherNo, self._accHead, self._paidTo, self._rupeesNo, self._rupeesTxt, self._accountOf, self._byCCNo, self._bankAccNo, self._onTime)
