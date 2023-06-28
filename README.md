@@ -10,7 +10,7 @@ A College Project
 # Installation
 1. Download the Copy of the application from the link given below (Download the Code for Clone using Git)
 2. Run the "install.bat"
-3. Setup the data in "receipt-app/statics/sbStatics.json"
+3. Setup the data in "receipt-app/statics/dbStatics.json"
 4. Run the "database.bat"
 5. Run the "reciept.bat"
 
