@@ -105,7 +105,7 @@ class Printer():
 
         filename = f"{self._voucherNo}.pdf" 
         pdf.output(f'./pdfs/{filename}', 'F')
-        print(os.getcwd())
+        # print(os.getcwd())
         filepath = str(os.getcwd()) + str(f"\pdfs\{filename}")
         os.startfile(filepath, "Print")
 
