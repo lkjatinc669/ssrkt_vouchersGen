@@ -20,6 +20,8 @@ class App():
         self.dbConnStatics = self.getDBStatics()
         self.currtime = self.getCurrTime()
 
+        self.cashorbank = ["Cash", "Bank"]
+
         self.stringVar_voucherNoS = StringVar()
         self.stringVar_voucherNo = StringVar()
         self.stringVar_accHead = StringVar()
@@ -102,9 +104,10 @@ class App():
 
         self.y += self.increment
 
-        self.byCCNoL = Label(self.master, text="By Cheque No/ Cash")
+        self.byCCNoL = Label(self.master, text="Type")
         self.byCCNoL.place(x=10, y=self.y)
-        self.byCCNoE = Entry(self.master, textvariable=self.stringVar_byCCNo)
+        # self.byCCNoE = Entry(self.master, textvariable=self.stringVar_byCCNo)
+        self.byCCNoE = ttk.Combobox(self.master, textvariable=self.stringVar_byCCNo, state='readonly', values=self.accountHeadOptList)
         self.byCCNoE.place(x=150, y=self.y)
 
         self.bankAccNoL = Label(self.master, text="Bank Acc. No")

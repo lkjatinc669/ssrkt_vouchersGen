@@ -44,10 +44,10 @@ class Printer():
         pdf.set_font('Arial', '', 10)
         pdf.ln(1)
         pdf.set_font('Arial', '', 10)
-        pdf.cell(w = 150, h = 8, txt="Date:", align="R")
+        pdf.cell(w = 150, h = 8, txt="Date: ", align="R")
         pdf.cell(w = 40, h = 8, txt=self.getCurrentTime(), align="R")
         pdf.ln(7)
-        pdf.cell(w = 60, h = 7, txt="Account Head: ", border=1)
+        pdf.cell(w = 60, h = 7, txt="Account Head ", border=1)
         pdf.cell(w = 130, h = 7, txt=self._accHead, border=1)
 
         pdf.ln(7)
@@ -67,7 +67,7 @@ class Printer():
         pdf.cell(w = 130, h = 7, txt=self._accountOf, border=1)
 
         pdf.ln(7)
-        pdf.cell(w = 60, h = 7, txt="By Cheque No / Cash", border=1)
+        pdf.cell(w = 60, h = 7, txt="Type", border=1)
         pdf.cell(w = 130, h = 7, txt=self._byCCNo, border=1)
 
         pdf.ln(7)
