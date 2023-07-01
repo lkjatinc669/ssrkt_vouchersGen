@@ -66,12 +66,12 @@ mycursor.execute("""
     VALUES(
         0,
         'Head',
-        'Paid To',
-        3,
-        'Three',
-        'Dummy',
-        '234',
-        '5446'
+        'Self',
+        0,
+        'Zero',
+        'Tests',
+        'None',
+        '0000'
     )"""
 )
 connection.commit()

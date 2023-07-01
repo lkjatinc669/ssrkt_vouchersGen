@@ -5,6 +5,7 @@ import json
 import datetime
 from libs import wordGen
 from database import initialize
+from database import connChecker
 from libs import listUpdater
 from libs import printer
 
@@ -17,10 +18,16 @@ class App():
         self.master = master
 
         self.loadList()
-        self.dbConnStatics = self.getDBStatics()
         self.currtime = self.getCurrTime()
 
         self.cashorbank = ["Cash", "Bank"]
+
+        data = self.getDBStatics()
+        connes = connChecker.Checker(data[0], data[1], data[2], data[3]).connCheck()
+        if connes[0] == False:
+            messagebox.showerror("Error", connes[1])
+            self.master.destroy()
+            return None
 
         self.stringVar_voucherNoS = StringVar()
         self.stringVar_voucherNo = StringVar()
@@ -34,6 +41,8 @@ class App():
         self.stringVar_byCCNo = StringVar()
         self.stringVar_bankAccNo = StringVar()
         self.stringVar_onDate = StringVar()
+        
+        self.dbConnStatics = self.getDBStatics()
 
         self.topBanner1 = Label(self.master, text="Seva Sadan's", width=110)
         self.topBanner1.place(x=10, y=10)
@@ -107,7 +116,7 @@ class App():
         self.byCCNoL = Label(self.master, text="Type")
         self.byCCNoL.place(x=10, y=self.y)
         # self.byCCNoE = Entry(self.master, textvariable=self.stringVar_byCCNo)
-        self.byCCNoE = ttk.Combobox(self.master, textvariable=self.stringVar_byCCNo, state='readonly', values=self.accountHeadOptList)
+        self.byCCNoE = ttk.Combobox(self.master, textvariable=self.stringVar_byCCNo, state='readonly', values=self.cashorbank)
         self.byCCNoE.place(x=150, y=self.y)
 
         self.bankAccNoL = Label(self.master, text="Bank Acc. No")
