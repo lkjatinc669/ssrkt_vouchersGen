@@ -275,7 +275,7 @@ class App():
             self.rupeesNoE.insert(0, data[4])
             self.rupeesTxtE.insert(0, data[5])
             self.accountOfE.insert(0, data[6])
-            self.byCCNoE.insert(0, data[7])
+            self.byCCNoE.set(data[7])
             self.bankAccNoE.insert(0, data[8])
             self.onDateE.config(state="normal")
             self.onDateE.insert(0, data[9])
